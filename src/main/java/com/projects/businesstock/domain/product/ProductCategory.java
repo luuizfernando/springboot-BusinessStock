@@ -1,6 +1,7 @@
 package com.projects.businesstock.domain.product;
 
 public enum ProductCategory {
+
     ELETRONICS("eletronics"),
     SPORT("sport"),
     HOUSE("house"),
@@ -15,4 +16,5 @@ public enum ProductCategory {
     public String getCategory() {
         return category;
     }
+    
 }
