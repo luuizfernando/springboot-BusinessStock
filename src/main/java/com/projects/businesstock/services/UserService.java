@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.projects.businesstock.domain.product.Product;
-import com.projects.businesstock.repositories.ProductRepository;
+import com.projects.businesstock.domain.user.User;
+import com.projects.businesstock.repositories.UserRepository;
 
 @Service
-public class ProductService {
-
+public class UserService {
+    
     @Autowired
-    ProductRepository repository;
+    UserRepository repository;
 
-    public List<Product> findAll() {
+    public List<User> findAll() {
         return repository.findAll();
     }
-        
+
 }
