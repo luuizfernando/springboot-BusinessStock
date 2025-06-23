@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping(value="/products")
+@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
