@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.projects.businesstock.domain.product.Product;
 import com.projects.businesstock.services.ProductService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,12 +29,14 @@ public class ProductController {
     @Autowired
     ProductService service;
 
+    @Operation(description = "Return all products")
     @GetMapping
     public ResponseEntity<List<Product>> findAll() {
         List<Product> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
+    @Operation(description = "Insert a product")
     @PostMapping
     public Product insertProduct(@RequestBody Product p) {
         return service.insertProduct(p);
