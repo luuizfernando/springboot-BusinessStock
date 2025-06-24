@@ -31,7 +31,14 @@ public class ProductService {
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }
-        
+
+    public void deleteProduct(Long id) {
+        try {
+            repository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
+    }
 
     private void updateData(Product entity, Product p) {
         entity.setName(p.getName());

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projects.businesstock.domain.product.Product;
 import com.projects.businesstock.services.ProductService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,5 +43,11 @@ public class ProductController {
         p = service.updateProduct(id, p);
         return ResponseEntity.ok().body(p);
     }
-    
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        service.deleteProduct(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
