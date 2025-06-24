@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.projects.businesstock.domain.product.Product;
 import com.projects.businesstock.services.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -24,5 +27,11 @@ public class ProductController {
         List<Product> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
+
+    @PostMapping
+    public Product insertProduct(@RequestBody Product p) {
+        return service.insertProduct(p);
+    }
+    
     
 }
