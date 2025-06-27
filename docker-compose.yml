@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports: 
+      - 5433:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=springstock
+      - POSTGRES_USER=postgres
+    networks:
+      - sbstock-network
+    volumes:
+      - sbstock-volume:/var/lib/postgresql/data
+
+  backend:
+    image: sbstock-docker
+    container_name: sbstock-backend
+    ports: 
+      - 8081:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/springstock
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - sbstock-network
+    depends_on:
+      - postgres
+
+networks:
+  sbstock-network:
+volumes:
+  sbstock-volume:
